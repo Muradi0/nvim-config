@@ -1,0 +1,9 @@
+{
+    "diagnostics.globals": [
+        "vim",
+        "LazyVim"
+    ],
+    "diagnostics.disable": [
+        "unused-local"
+    ]
+}
