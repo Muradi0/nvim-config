@@ -31,6 +31,7 @@ return {
 				"tailwindcss",
 				"jsonls",
 				"eslint",
+                "clangd"
 			}
 
 			for _, server in ipairs(servers) do

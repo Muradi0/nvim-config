@@ -43,9 +43,20 @@ vim.keymap.set("n", "<C-k>", ":m .-2<CR>==", { noremap = true, silent = true })
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
+-- ================================
+-- window splits mamagement
+-- ================================
+vim.keymap.set("n", "<a-j>", "<C-w>h", { noremap = true, silent = true })
+vim.keymap.set("n", "<a-k>", "<C-w>l", { noremap = true, silent = true })
+vim.keymap.set("n", "<a-v>", "<C-w>v", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-S-.>", "<C-w>>", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-S-,>", "<C-w><", { noremap = true, silent = true })
+
 vim.g.mapleader = " "
 
 vim.keymap.set('n', '<leader>gK', function()
     local new_config = not vim.diagnostic.config().virtual_lines
     vim.diagnostic.config({ virtual_lines = new_config })
 end, { desc = 'Toggle diagnostic virtual_lines' })
+
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)

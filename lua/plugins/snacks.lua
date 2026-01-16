@@ -8,11 +8,12 @@ return {
 		-- or leave it empty to use the default settings
 		-- refer to the configuration section below
 		terminal = { enabled = true },
-        image = {enabled = true}
+        image = {enabled = true},
+        notifier = {}
 	},
 	keys = {
 		{
-			"<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal",
+            "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal",
 		},
 	},
 }

@@ -2,6 +2,11 @@ return {
 	{
 		"nvim-telescope/telescope-ui-select.nvim",
 	},
+
+    {
+        "natecraddock/workspaces.nvim",
+    },
+
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
@@ -19,7 +24,18 @@ return {
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader><leader>", builtin.oldfiles, {})
 
+			vim.keymap.set("n", "<a-g>c", builtin.git_commits, {})
+			vim.keymap.set("n", "<a-g>b", builtin.git_branches, {})
+
 			require("telescope").load_extension("ui-select")
+			require("telescope").load_extension("workspaces")
+
+            local workspaces = require("workspaces")
+
+			vim.keymap.set("n", "<leader>wo", workspaces.open, {})
+			vim.keymap.set("n", "<leader>wl", workspaces.list, {})
+			vim.keymap.set("n", "<leader>wa", workspaces.add, {})
+			vim.keymap.set("n", "<leader>wr", workspaces.remove, {})
 		end,
 	},
 }
