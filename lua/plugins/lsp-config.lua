@@ -9,11 +9,16 @@ return {
 
 	{
 		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
-		opts = {
-			auto_install = true,
-		},
-	},
+        lazy = false,
+        opts = {
+            ensure_installed = {
+                "arduino_language_server", -- Add this!
+                "clangd",
+                -- ... your other servers
+            },
+            auto_install = true,
+        },
+    },
 
 	{
 		"neovim/nvim-lspconfig",
@@ -30,14 +35,29 @@ return {
 				"jdtls",
 				"tailwindcss",
 				"jsonls",
+                'prettier',
 				"eslint",
-                "clangd"
+                "clangd",
+                'arduino_language_server',
+                'css_lsp',
 			}
 
 			for _, server in ipairs(servers) do
-				vim.lsp.config(server, {
-					capabilities = capabilities,
-				})
+                if server == "basedpyright" then
+                    vim.lsp.config(server, {
+                        settings = {
+                            basedpyright = {
+                                analysis = {
+                                    typeCheckingMode = "basic",
+                                }
+                            }
+                        }
+                    })
+                else
+                    vim.lsp.config(server, {
+                        capabilities = capabilities,
+                    })
+                end
 			end
 
 			local vue_language_server_path = vim.fn.expand("$MASON/packages")

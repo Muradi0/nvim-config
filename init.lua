@@ -33,6 +33,7 @@ vim.diagnostic.config({
     },
 })
 
+
 vim.diagnostic.config({
     -- ... other configs like signs ...
 
@@ -41,6 +42,9 @@ vim.diagnostic.config({
         spacing = 4, -- Add some space after the prefix
     },
 })
+
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevel = 99 -- Keeps all folds open by default when you open a file
 
 require("vim-options")
 require("lazy").setup("plugins")
